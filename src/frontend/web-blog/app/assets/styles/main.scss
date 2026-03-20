@@ -1,0 +1,12 @@
+/**
+ * @file main.scss
+ * @description 全局样式入口文件，按顺序引入各 SCSS 模块
+ * @author TixXin
+ * @since 2025-03-17
+ */
+
+@use 'variables';
+@use 'base';
+@use 'components';
+@use 'layout';
+@use 'utilities';
