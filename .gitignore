@@ -19,3 +19,6 @@ Thumbs.db
 temp/*.mjs
 temp/*.js
 !temp/UI excample/**/*.js
+
+# Playwright MCP 临时文件
+.playwright-mcp/
