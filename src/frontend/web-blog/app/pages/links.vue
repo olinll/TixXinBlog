@@ -6,14 +6,8 @@
 -->
 
 <template>
-  <LayoutBlogShell>
-    <template #left>
-      <LayoutSidebarNav />
-      <BlogSubscribeCard />
-      <BlogThemeSwitcher />
-    </template>
-
-    <template #center>
+  <div class="page-columns">
+    <main class="main-content">
       <header class="links-header">
         <CommonSearchBox placeholder="搜索友链..." />
       </header>
@@ -26,15 +20,15 @@
         <LinkGrid :links="links" />
         <LinkForm />
       </div>
-    </template>
+    </main>
 
-    <template #right>
+    <aside class="aside-right">
       <SidebarRightSidebar>
         <LinkRules :rules="linkRules" />
         <LinkSiteInfoCard :info="siteInfo" />
       </SidebarRightSidebar>
-    </template>
-  </LayoutBlogShell>
+    </aside>
+  </div>
 </template>
 
 <script setup lang="ts">

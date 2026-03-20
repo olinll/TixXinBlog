@@ -1,6 +1,6 @@
 /**
  * @file _layout.scss
- * @description 页面布局样式，定义三栏网格、断点响应和滚动行为
+ * @description 页面布局样式，定义两级网格（外层左侧栏+内容区，内层中间+右侧栏）、断点响应和滚动行为
  * @author TixXin
  * @since 2025-03-17
  */
@@ -24,7 +24,8 @@
   }
 }
 
-.main-grid {
+// 外层网格：左侧栏（持久化） + 内容区（随页面切换）
+.blog-grid {
   width: 100%;
   max-width: $container-max-width;
   margin: 0 auto;
@@ -32,7 +33,7 @@
   grid-template-columns: 1fr;
   gap: $grid-gap;
   align-items: start;
-  padding-bottom: 5rem; // mobile nav space
+  padding-bottom: 5rem;
 
   @media (min-width: $breakpoint-lg) {
     grid-template-columns: #{$sidebar-left-width} 1fr;
@@ -40,8 +41,32 @@
   }
 
   @media (min-width: $breakpoint-xl) {
-    grid-template-columns: #{$sidebar-left-width} 1fr #{$sidebar-right-width};
     flex: 1;
+    min-height: 0;
+  }
+}
+
+// 内容区容器：承接 NuxtPage 渲染，传递高度给页面根元素
+.blog-content {
+  min-width: 0;
+
+  @media (min-width: $breakpoint-xl) {
+    min-height: 0;
+    height: 100%;
+  }
+}
+
+// 页面单根包裹：每个页面的根 div，负责中间+右侧栏的网格拆分
+.page-columns {
+  display: flex;
+  flex-direction: column;
+  gap: $grid-gap;
+  height: 100%;
+
+  @media (min-width: $breakpoint-xl) {
+    display: grid;
+    grid-template-columns: 1fr #{$sidebar-right-width};
+    gap: $grid-gap;
     min-height: 0;
   }
 }
@@ -60,8 +85,7 @@
 }
 
 .main-content {
-  background: var(--surface-1-alpha-90);
-  backdrop-filter: blur(12px);
+  background: var(--surface-1);
   border-radius: $radius-card;
   border: 1px solid var(--border);
   box-shadow: var(--shadow-card);
@@ -111,12 +135,7 @@
   flex-direction: column;
   gap: 1.25rem;
 
-  @media (min-width: $breakpoint-lg) {
-    grid-column-start: 2;
-  }
-
   @media (min-width: $breakpoint-xl) {
-    grid-column-start: auto;
     height: 100%;
     overflow-y: auto;
     padding: 16px;

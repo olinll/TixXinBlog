@@ -8,7 +8,7 @@
 @use 'tokens' as *;
 
 .card {
-  background: var(--surface-1-alpha);
+  background: var(--surface-1);
   border: 1px solid var(--border);
   border-radius: $radius-card;
   box-shadow: var(--shadow-card);

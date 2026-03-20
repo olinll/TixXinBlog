@@ -6,14 +6,8 @@
 -->
 
 <template>
-  <LayoutBlogShell>
-    <template #left>
-      <LayoutSidebarNav />
-      <BlogSubscribeCard />
-      <BlogThemeSwitcher />
-    </template>
-
-    <template #center>
+  <div class="page-columns">
+    <main class="main-content">
       <header class="gallery-header">
         <CommonSearchBox placeholder="搜索照片..." />
       </header>
@@ -37,15 +31,15 @@
         :visible="lightBoxVisible"
         @close="closeLightBox"
       />
-    </template>
+    </main>
 
-    <template #right>
+    <aside class="aside-right">
       <SidebarRightSidebar>
         <GalleryStats :stats="galleryStats" />
         <GalleryGearCard :gear="gearList" />
       </SidebarRightSidebar>
-    </template>
-  </LayoutBlogShell>
+    </aside>
+  </div>
 </template>
 
 <script setup lang="ts">

@@ -6,14 +6,8 @@
 -->
 
 <template>
-  <LayoutBlogShell>
-    <template #left>
-      <LayoutSidebarNav />
-      <BlogSubscribeCard />
-      <BlogThemeSwitcher />
-    </template>
-
-    <template #center>
+  <div class="page-columns">
+    <main class="main-content">
       <div class="guestbook-center">
         <GuestbookHeader :member-count="totalMessageCount" />
         <div class="guestbook-center__messages">
@@ -21,16 +15,16 @@
         </div>
         <GuestbookMessageInput />
       </div>
-    </template>
+    </main>
 
-    <template #right>
+    <aside class="aside-right">
       <SidebarRightSidebar>
         <GuestbookChatStats :stats="chatStats" />
         <GuestbookChatRules :rules="chatRules" />
         <GuestbookActiveMembers :members="activeMembers" />
       </SidebarRightSidebar>
-    </template>
-  </LayoutBlogShell>
+    </aside>
+  </div>
 </template>
 
 <script setup lang="ts">

@@ -6,14 +6,8 @@
 -->
 
 <template>
-  <LayoutBlogShell>
-    <template #left>
-      <LayoutSidebarNav />
-      <BlogSubscribeCard />
-      <BlogThemeSwitcher />
-    </template>
-
-    <template #center>
+  <div class="page-columns">
+    <main class="main-content">
       <CommonReadingProgress :progress="progress" />
       <div ref="scrollRoot" class="article-page">
         <ArticleStickyHeader
@@ -50,16 +44,16 @@
           <ArticleCommentSection :comments="comments" />
         </div>
       </div>
-    </template>
+    </main>
 
-    <template #right>
+    <aside class="aside-right">
       <SidebarRightSidebar>
         <ArticleTableOfContents :items="tocItems" :active-id="activeId" />
         <ArticleRelatedPosts :posts="relatedPosts" />
         <AboutDonateCard />
       </SidebarRightSidebar>
-    </template>
-  </LayoutBlogShell>
+    </aside>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -74,7 +68,6 @@ const route = useRoute()
 const scrollRoot = ref<HTMLElement | null>(null)
 
 const article = computed(() => {
-  // 当前仅 mock 一篇详情，任意 id 先复用同一份数据便于联调 UI
   void route.params.id
   return mockArticleDetail
 })

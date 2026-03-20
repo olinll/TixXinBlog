@@ -6,26 +6,20 @@
 -->
 
 <template>
-  <LayoutBlogShell>
-    <template #left>
-      <LayoutSidebarNav />
-      <BlogSubscribeCard />
-      <BlogThemeSwitcher />
-    </template>
-
-    <template #center>
+  <div class="page-columns">
+    <main class="main-content">
       <BlogPostTabs v-model="activeTab" />
       <BlogPostCardList :posts="posts" :active-tab="activeTab" />
-    </template>
+    </main>
 
-    <template #right>
+    <aside class="aside-right">
       <SidebarRightSidebar>
         <SidebarSiteStatsCard :stats="siteStats" />
         <SidebarTagCloudCard :tags="tags" />
         <SidebarCategoryCard :categories="categories" />
       </SidebarRightSidebar>
-    </template>
-  </LayoutBlogShell>
+    </aside>
+  </div>
 </template>
 
 <script setup lang="ts">

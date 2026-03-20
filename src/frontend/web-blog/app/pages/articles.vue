@@ -6,14 +6,8 @@
 -->
 
 <template>
-  <LayoutBlogShell>
-    <template #left>
-      <LayoutSidebarNav />
-      <BlogSubscribeCard />
-      <BlogThemeSwitcher />
-    </template>
-
-    <template #center>
+  <div class="page-columns">
+    <main class="main-content">
       <header class="articles-header">
         <CommonSearchBox placeholder="搜索文章标题、内容..." />
       </header>
@@ -25,17 +19,17 @@
       <div class="articles-body">
         <ArticleArchiveTimeline :years="archiveYears" />
       </div>
-    </template>
+    </main>
 
-    <template #right>
+    <aside class="aside-right">
       <SidebarRightSidebar>
         <ArticleArchiveStats
           :stats="archiveStats"
           :distribution="categoryDistribution"
         />
       </SidebarRightSidebar>
-    </template>
-  </LayoutBlogShell>
+    </aside>
+  </div>
 </template>
 
 <script setup lang="ts">

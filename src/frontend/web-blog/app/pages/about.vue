@@ -6,14 +6,8 @@
 -->
 
 <template>
-  <LayoutBlogShell>
-    <template #left>
-      <LayoutSidebarNav />
-      <BlogSubscribeCard />
-      <BlogThemeSwitcher />
-    </template>
-
-    <template #center>
+  <div class="page-columns">
+    <main class="main-content">
       <header class="about-header">
         <CommonSearchBox placeholder="搜索..." />
       </header>
@@ -23,16 +17,16 @@
         <AboutExperienceTimeline :experiences="experiences" />
         <AboutContactCards :contacts="contacts" />
       </div>
-    </template>
+    </main>
 
-    <template #right>
+    <aside class="aside-right">
       <SidebarRightSidebar>
         <AboutHobbyCard :hobbies="hobbies" />
         <AboutReadingCard :books="readings" />
         <AboutDonateCard />
       </SidebarRightSidebar>
-    </template>
-  </LayoutBlogShell>
+    </aside>
+  </div>
 </template>
 
 <script setup lang="ts">

@@ -36,7 +36,7 @@ src/backend/
 ```
 src/frontend/web-blog/
 ├── app/                       # Nuxt 4 应用目录
-│   ├── app.vue                # 应用根组件
+│   ├── app.vue                # 应用根组件（配置页面切换过渡动画）
 │   ├── assets/                # 静态资源
 │   │   └── styles/            # SCSS 样式文件
 │   ├── components/            # 可复用 UI 组件
@@ -62,7 +62,7 @@ src/frontend/web-blog/
 │   │   ├── project/           # 项目展示模块
 │   │   ├── site/              # 站点模块
 │   │   └── stats/             # 统计模块
-│   ├── layouts/               # 页面布局
+│   ├── layouts/               # 页面布局（default.vue 持有持久化左侧栏）
 │   └── pages/                 # 文件系统路由页面
 │       └── articles/          # 文章子路由
 ├── public/                    # 公共静态资源（不经编译）
@@ -81,7 +81,7 @@ app/assets/styles/
 ├── _variables.scss        # CSS 自定义属性（亮色/暗色主题运行时变量）
 ├── _base.scss             # 全局基础样式（重置、排版、滚动条、选区）
 ├── _components.scss       # 全局共享组件样式（卡片、导航、Tab、按钮等）
-├── _layout.scss           # 页面布局样式（三栏网格、断点响应、滚动行为）
+├── _layout.scss           # 页面布局样式（两级网格、断点响应、滚动行为）
 └── _utilities.scss        # 工具类（文本截断、动画延迟等辅助类）
 ```
 
@@ -159,7 +159,6 @@ app/assets/styles/
 
 | 文件 | 职责 |
 |------|------|
-| BlogShell.vue | 博客页面外壳，定义三栏网格布局和底部导航/页脚 |
 | MobileNav.vue | 移动端底部导航栏 |
 | SidebarNav.vue | 桌面端左侧栏导航 |
 | StatusFooter.vue | 站点底部页脚，展示版权、链接和系统状态 |

@@ -6,14 +6,8 @@
 -->
 
 <template>
-  <LayoutBlogShell>
-    <template #left>
-      <LayoutSidebarNav />
-      <BlogSubscribeCard />
-      <BlogThemeSwitcher />
-    </template>
-
-    <template #center>
+  <div class="page-columns">
+    <main class="main-content">
       <header class="projects-header">
         <CommonSearchBox placeholder="搜索项目..." />
       </header>
@@ -25,15 +19,15 @@
       <div class="projects-body">
         <ProjectGrid :projects="projects" />
       </div>
-    </template>
+    </main>
 
-    <template #right>
+    <aside class="aside-right">
       <SidebarRightSidebar>
         <ProjectStats :stats="projectStats" />
         <ProjectTechStackCard :stack="techStack" />
       </SidebarRightSidebar>
-    </template>
-  </LayoutBlogShell>
+    </aside>
+  </div>
 </template>
 
 <script setup lang="ts">
