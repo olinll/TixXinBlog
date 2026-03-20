@@ -1,0 +1,57 @@
+<!--
+  @file SidebarNav.vue
+  @description 桌面端左侧栏导航组件
+  @author TixXin
+  @since 2025-03-17
+-->
+
+<template>
+  <nav class="card sidebar-nav">
+    <ul class="sidebar-nav__list">
+      <li v-for="item in navItems" :key="item.label">
+        <NuxtLink
+          :to="item.to"
+          class="nav-item"
+          :class="{ active: isActive(item.to) }"
+        >
+          <Icon :name="item.icon" class="nav-item__icon" size="20" />
+          <span class="font-medium">{{ item.label }}</span>
+        </NuxtLink>
+      </li>
+    </ul>
+  </nav>
+</template>
+
+<script setup lang="ts">
+import { mockNavItems } from '~/features/nav/mock'
+
+const route = useRoute()
+const navItems = mockNavItems
+
+function isActive(to: string) {
+  return route.path === to
+}
+</script>
+
+<style lang="scss" scoped>
+.sidebar-nav {
+  padding: 1rem;
+  display: none;
+
+  @media (min-width: $breakpoint-lg) {
+    display: block;
+  }
+}
+
+.sidebar-nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.nav-item__icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+}
+</style>

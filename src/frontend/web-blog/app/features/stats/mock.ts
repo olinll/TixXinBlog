@@ -1,0 +1,47 @@
+/**
+ * @file mock.ts
+ * @description 统计模块 mock 数据，提供站点统计、标签列表和分类列表
+ * @author TixXin
+ * @since 2025-03-17
+ */
+
+import type { SiteStats, TagItem, CategoryItem } from './types'
+
+export const mockSiteStats: SiteStats = {
+  articles: 86,
+  views: '4.5w',
+  comments: 326,
+  tags: 18,
+  uptimeDays: 1888,
+}
+
+export const mockTags: TagItem[] = [
+  { name: 'Vue3', count: 12, color: '#10b981' },
+  { name: 'TypeScript', count: 9, color: '#3b82f6' },
+  { name: 'React', count: 7, color: '#06b6d4' },
+  { name: 'Tailwind', count: 6, color: '#8b5cf6' },
+  { name: 'Node.js', count: 8, color: '#22c55e' },
+  { name: 'UI设计', count: 5, color: '#f43f5e' },
+  { name: '生活日常', count: 24, color: '#f59e0b' },
+  { name: '摄影', count: 4, color: '#ec4899' },
+  { name: '算法', count: 6, color: '#0ea5e9' },
+  { name: 'Docker', count: 3, color: '#6366f1' },
+  { name: 'CSS', count: 10, color: '#14b8a6' },
+  { name: 'Git', count: 5, color: '#ef4444' },
+  { name: 'Linux', count: 4, color: '#a855f7' },
+  { name: '性能优化', count: 7, color: '#f97316' },
+  { name: 'DevOps', count: 3, color: '#64748b' },
+  { name: 'Webpack', count: 4, color: '#8b5cf6' },
+  { name: 'Python', count: 6, color: '#3b82f6' },
+  { name: 'Rust', count: 2, color: '#ef4444' },
+  { name: '数据库', count: 5, color: '#06b6d4' },
+  { name: 'GraphQL', count: 3, color: '#ec4899' },
+]
+
+export const mockCategories: CategoryItem[] = [
+  { name: '随笔日记', count: 10, icon: 'lucide:flame', iconColor: '#f97316', iconBg: 'rgba(249, 115, 22, 0.1)' },
+  { name: '前端开发', count: 28, icon: 'lucide:code', iconColor: '#3b82f6', iconBg: 'rgba(59, 130, 246, 0.1)' },
+  { name: '工作复盘', count: 15, icon: 'lucide:briefcase', iconColor: '#64748b', iconBg: 'rgba(100, 116, 139, 0.1)' },
+  { name: '后端技术', count: 8, icon: 'lucide:server', iconColor: '#10b981', iconBg: 'rgba(16, 185, 129, 0.1)' },
+  { name: 'DevOps', count: 5, icon: 'lucide:terminal', iconColor: '#06b6d4', iconBg: 'rgba(6, 182, 212, 0.1)' },
+]
