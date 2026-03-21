@@ -134,7 +134,7 @@
   }
 
   &:focus {
-    border-color: var(--accent);
+    border-color: var(--border-hover);
     box-shadow: 0 0 0 4px var(--accent-soft);
   }
 }
