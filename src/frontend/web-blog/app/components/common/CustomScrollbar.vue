@@ -21,17 +21,19 @@
       <slot />
     </div>
 
-    <!-- 滚动进度条 -->
-    <div
-      v-if="showProgress"
-      class="custom-scrollbar__progress"
-      aria-hidden="true"
-    >
+    <!-- 滚动进度条：Teleport 到 body 顶部，不受父级 overflow/transform 影响 -->
+    <Teleport to="body">
       <div
-        class="custom-scrollbar__progress-bar"
-        :style="progressBarStyle"
-      />
-    </div>
+        v-if="showProgress"
+        class="custom-scrollbar__progress"
+        aria-hidden="true"
+      >
+        <div
+          class="custom-scrollbar__progress-bar"
+          :style="progressBarStyle"
+        />
+      </div>
+    </Teleport>
 
     <Transition name="scrollbar-fade">
       <div
@@ -273,12 +275,12 @@ onUnmounted(() => {
 }
 
 .custom-scrollbar__progress {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   height: 2px;
-  z-index: 15;
+  z-index: 100;
   pointer-events: none;
   overflow: hidden;
 }
@@ -286,7 +288,7 @@ onUnmounted(() => {
 .custom-scrollbar__progress-bar {
   height: 100%;
   width: 100%;
-  background: var(--accent);
+  background: #22c55e;
   transform-origin: left;
   transition: transform 0.1s ease-out;
 }
