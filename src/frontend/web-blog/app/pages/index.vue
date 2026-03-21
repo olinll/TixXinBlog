@@ -6,19 +6,18 @@
 -->
 
 <template>
-  <div class="page-columns">
-    <main class="main-content">
-      <BlogPostTabs v-model="activeTab" />
-      <BlogPostCardList :posts="posts" :active-tab="activeTab" />
-    </main>
-
-    <aside class="aside-right">
-      <SidebarRightSidebar>
-        <SidebarSiteStatsCard :stats="siteStats" />
-        <SidebarTagCloudCard :tags="tags" />
-        <SidebarCategoryCard :categories="categories" />
-      </SidebarRightSidebar>
-    </aside>
+  <div class="main-inner">
+    <BlogPostTabs v-model="activeTab" />
+    <BlogPostCardList :posts="posts" :active-tab="activeTab" />
+    <ClientOnly>
+      <Teleport to="#right-sidebar-target">
+        <SidebarRightSidebar>
+          <SidebarSiteStatsCard :stats="siteStats" />
+          <SidebarTagCloudCard :tags="tags" />
+          <SidebarCategoryCard :categories="categories" />
+        </SidebarRightSidebar>
+      </Teleport>
+    </ClientOnly>
   </div>
 </template>
 

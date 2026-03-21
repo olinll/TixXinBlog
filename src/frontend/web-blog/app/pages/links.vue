@@ -6,28 +6,28 @@
 -->
 
 <template>
-  <div class="page-columns">
-    <main class="main-content">
-      <header class="links-header">
+  <div class="main-inner">
+    <CommonPageHeader
+      title="友情链接"
+      subtitle="互联网上志同道合的伙伴们"
+      icon="lucide:link"
+    >
+      <template #action>
         <CommonSearchBox placeholder="搜索友链..." />
-      </header>
-      <CommonPageHeader
-        title="友情链接"
-        subtitle="互联网上志同道合的伙伴们"
-        icon="lucide:link"
-      />
-      <div class="links-body">
-        <LinkGrid :links="links" />
-        <LinkForm />
-      </div>
-    </main>
-
-    <aside class="aside-right">
-      <SidebarRightSidebar>
-        <LinkRules :rules="linkRules" />
-        <LinkSiteInfoCard :info="siteInfo" />
-      </SidebarRightSidebar>
-    </aside>
+      </template>
+    </CommonPageHeader>
+    <div class="links-body">
+      <LinkGrid :links="links" />
+      <LinkForm />
+    </div>
+    <ClientOnly>
+      <Teleport to="#right-sidebar-target">
+        <SidebarRightSidebar>
+          <LinkRules :rules="linkRules" />
+          <LinkSiteInfoCard :info="siteInfo" />
+        </SidebarRightSidebar>
+      </Teleport>
+    </ClientOnly>
   </div>
 </template>
 
@@ -40,12 +40,6 @@ const siteInfo = mockSiteInfo
 </script>
 
 <style lang="scss" scoped>
-.links-header {
-  padding: 1.5rem 2rem 0.5rem;
-  display: flex;
-  justify-content: flex-end;
-}
-
 .links-body {
   flex: 1;
   padding: 2rem;

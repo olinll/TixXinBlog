@@ -6,27 +6,27 @@
 -->
 
 <template>
-  <div class="page-columns">
-    <main class="main-content">
-      <header class="projects-header">
+  <div class="main-inner">
+    <CommonPageHeader
+      title="项目展示"
+      subtitle="这里是我参与或独立开发的开源项目"
+      icon="lucide:layers"
+    >
+      <template #action>
         <CommonSearchBox placeholder="搜索项目..." />
-      </header>
-      <CommonPageHeader
-        title="项目展示"
-        subtitle="这里是我参与或独立开发的开源项目"
-        icon="lucide:layers"
-      />
-      <div class="projects-body">
-        <ProjectGrid :projects="projects" />
-      </div>
-    </main>
-
-    <aside class="aside-right">
-      <SidebarRightSidebar>
-        <ProjectStats :stats="projectStats" />
-        <ProjectTechStackCard :stack="techStack" />
-      </SidebarRightSidebar>
-    </aside>
+      </template>
+    </CommonPageHeader>
+    <div class="projects-body">
+      <ProjectGrid :projects="projects" />
+    </div>
+    <ClientOnly>
+      <Teleport to="#right-sidebar-target">
+        <SidebarRightSidebar>
+          <ProjectStats :stats="projectStats" />
+          <ProjectTechStackCard :stack="techStack" />
+        </SidebarRightSidebar>
+      </Teleport>
+    </ClientOnly>
   </div>
 </template>
 
@@ -39,12 +39,6 @@ const techStack = mockTechStack
 </script>
 
 <style lang="scss" scoped>
-.projects-header {
-  padding: 1.5rem 2rem 0.5rem;
-  display: flex;
-  justify-content: flex-end;
-}
-
 .projects-body {
   flex: 1;
   padding: 2rem;

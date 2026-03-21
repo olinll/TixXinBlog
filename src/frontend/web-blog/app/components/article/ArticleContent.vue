@@ -69,7 +69,7 @@ async function copyCode(text: string) {
   margin: 0;
   scroll-margin-top: 5rem;
 
-  h2& {
+  h2 {
     font-size: 1.25rem;
     margin-top: 2rem;
     margin-bottom: 1rem;
@@ -79,7 +79,7 @@ async function copyCode(text: string) {
     }
   }
 
-  h3& {
+  h3 {
     font-size: 1.125rem;
     font-weight: 600;
     margin-top: 1.5rem;

@@ -6,29 +6,29 @@
 -->
 
 <template>
-  <div class="page-columns">
-    <main class="main-content">
-      <header class="articles-header">
+  <div class="main-inner">
+    <CommonPageHeader
+      title="文章归档"
+      subtitle="共 86 篇文章，持续记录中..."
+      icon="lucide:archive"
+    >
+      <template #action>
         <CommonSearchBox placeholder="搜索文章标题、内容..." />
-      </header>
-      <CommonPageHeader
-        title="文章归档"
-        subtitle="共 86 篇文章，持续记录中..."
-        icon="lucide:archive"
-      />
-      <div class="articles-body">
-        <ArticleArchiveTimeline :years="archiveYears" />
-      </div>
-    </main>
-
-    <aside class="aside-right">
-      <SidebarRightSidebar>
-        <ArticleArchiveStats
-          :stats="archiveStats"
-          :distribution="categoryDistribution"
-        />
-      </SidebarRightSidebar>
-    </aside>
+      </template>
+    </CommonPageHeader>
+    <div class="articles-body">
+      <ArticleArchiveTimeline :years="archiveYears" />
+    </div>
+    <ClientOnly>
+      <Teleport to="#right-sidebar-target">
+        <SidebarRightSidebar>
+          <ArticleArchiveStats
+            :stats="archiveStats"
+            :distribution="categoryDistribution"
+          />
+        </SidebarRightSidebar>
+      </Teleport>
+    </ClientOnly>
   </div>
 </template>
 
@@ -45,12 +45,6 @@ const categoryDistribution = mockCategoryDistribution
 </script>
 
 <style lang="scss" scoped>
-.articles-header {
-  padding: 1.5rem 2rem 0.5rem;
-  display: flex;
-  justify-content: flex-end;
-}
-
 .articles-body {
   flex: 1;
   padding: 1.5rem 2rem 2rem;

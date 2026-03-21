@@ -6,39 +6,39 @@
 -->
 
 <template>
-  <div class="page-columns">
-    <main class="main-content">
-      <header class="gallery-header">
+  <div class="main-inner">
+    <CommonPageHeader
+      title="画廊"
+      subtitle="用镜头记录生活的美好瞬间"
+      icon="lucide:image"
+    >
+      <template #action>
         <CommonSearchBox placeholder="搜索照片..." />
-      </header>
-      <CommonPageHeader
-        title="画廊"
-        subtitle="用镜头记录生活的美好瞬间"
-        icon="lucide:image"
+      </template>
+    </CommonPageHeader>
+    <div class="gallery-body">
+      <GalleryFilter
+        v-model="activeFilter"
+        :categories="categories"
       />
-      <div class="gallery-body">
-        <GalleryFilter
-          v-model="activeFilter"
-          :categories="categories"
-        />
-        <GalleryGrid
-          :photos="filteredPhotos"
-          @select="openLightBox"
-        />
-      </div>
-      <GalleryLightBox
-        :photo="selectedPhoto"
-        :visible="lightBoxVisible"
-        @close="closeLightBox"
+      <GalleryGrid
+        :photos="filteredPhotos"
+        @select="openLightBox"
       />
-    </main>
-
-    <aside class="aside-right">
-      <SidebarRightSidebar>
-        <GalleryStats :stats="galleryStats" />
-        <GalleryGearCard :gear="gearList" />
-      </SidebarRightSidebar>
-    </aside>
+    </div>
+    <GalleryLightBox
+      :photo="selectedPhoto"
+      :visible="lightBoxVisible"
+      @close="closeLightBox"
+    />
+    <ClientOnly>
+      <Teleport to="#right-sidebar-target">
+        <SidebarRightSidebar>
+          <GalleryStats :stats="galleryStats" />
+          <GalleryGearCard :gear="gearList" />
+        </SidebarRightSidebar>
+      </Teleport>
+    </ClientOnly>
   </div>
 </template>
 
@@ -79,12 +79,6 @@ function closeLightBox() {
 </script>
 
 <style lang="scss" scoped>
-.gallery-header {
-  padding: 1.5rem 2rem 0.5rem;
-  display: flex;
-  justify-content: flex-end;
-}
-
 .gallery-body {
   flex: 1;
   padding: 0 2rem 2rem;

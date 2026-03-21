@@ -6,24 +6,23 @@
 -->
 
 <template>
-  <div class="page-columns">
-    <main class="main-content">
-      <div class="guestbook-center">
-        <GuestbookHeader :member-count="totalMessageCount" />
-        <div class="guestbook-center__messages">
-          <GuestbookMessageList :groups="dateGroups" />
-        </div>
-        <GuestbookMessageInput />
+  <div class="main-inner">
+    <div class="guestbook-center">
+      <GuestbookHeader :member-count="totalMessageCount" />
+      <div class="guestbook-center__messages">
+        <GuestbookMessageList :groups="dateGroups" />
       </div>
-    </main>
-
-    <aside class="aside-right">
-      <SidebarRightSidebar>
-        <GuestbookChatStats :stats="chatStats" />
-        <GuestbookChatRules :rules="chatRules" />
-        <GuestbookActiveMembers :members="activeMembers" />
-      </SidebarRightSidebar>
-    </aside>
+      <GuestbookMessageInput />
+    </div>
+    <ClientOnly>
+      <Teleport to="#right-sidebar-target">
+        <SidebarRightSidebar>
+          <GuestbookChatStats :stats="chatStats" />
+          <GuestbookChatRules :rules="chatRules" />
+          <GuestbookActiveMembers :members="activeMembers" />
+        </SidebarRightSidebar>
+      </Teleport>
+    </ClientOnly>
   </div>
 </template>
 

@@ -6,26 +6,25 @@
 -->
 
 <template>
-  <div class="page-columns">
-    <main class="main-content">
-      <header class="about-header">
-        <CommonSearchBox placeholder="搜索..." />
-      </header>
-      <div class="about-body">
-        <AboutHero :profile="profile" />
-        <AboutSkillBars :skills="skills" />
-        <AboutExperienceTimeline :experiences="experiences" />
-        <AboutContactCards :contacts="contacts" />
-      </div>
-    </main>
-
-    <aside class="aside-right">
-      <SidebarRightSidebar>
-        <AboutHobbyCard :hobbies="hobbies" />
-        <AboutReadingCard :books="readings" />
-        <AboutDonateCard />
-      </SidebarRightSidebar>
-    </aside>
+  <div class="main-inner">
+    <header class="about-header">
+      <CommonSearchBox placeholder="搜索..." />
+    </header>
+    <div class="about-body">
+      <AboutHero :profile="profile" />
+      <AboutSkillBars :skills="skills" />
+      <AboutExperienceTimeline :experiences="experiences" />
+      <AboutContactCards :contacts="contacts" />
+    </div>
+    <ClientOnly>
+      <Teleport to="#right-sidebar-target">
+        <SidebarRightSidebar>
+          <AboutHobbyCard :hobbies="hobbies" />
+          <AboutReadingCard :books="readings" />
+          <AboutDonateCard />
+        </SidebarRightSidebar>
+      </Teleport>
+    </ClientOnly>
   </div>
 </template>
 

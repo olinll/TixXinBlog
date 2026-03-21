@@ -6,53 +6,52 @@
 -->
 
 <template>
-  <div class="page-columns">
-    <main class="main-content">
-      <CommonReadingProgress :progress="progress" />
-      <div ref="scrollRoot" class="article-page">
-        <ArticleStickyHeader
-          :title="article.title"
-          :category="article.category"
-          :date="article.date"
-          :read-time="article.readTime"
-        />
-        <div class="article-page__inner">
-          <div class="article-page__cover-wrap">
-            <img
-              :src="article.cover"
-              :alt="article.title"
-              class="article-page__cover"
-              loading="lazy"
-            >
-          </div>
-          <div class="article-page__stats">
-            <span class="article-page__stat">
-              <Icon name="lucide:eye" size="14" />
-              {{ formatCount(article.views) }}
-            </span>
-            <span class="article-page__stat">
-              <Icon name="lucide:heart" size="14" />
-              {{ article.likes }}
-            </span>
-            <span class="article-page__stat">
-              <Icon name="lucide:message-circle" size="14" />
-              {{ article.comments }}
-            </span>
-          </div>
-          <ArticleContent :sections="article.content" />
-          <ArticleNav />
-          <ArticleCommentSection :comments="comments" />
+  <div class="main-inner">
+    <CommonReadingProgress :progress="progress" />
+    <div ref="scrollRoot" class="article-page">
+      <ArticleStickyHeader
+        :title="article.title"
+        :category="article.category"
+        :date="article.date"
+        :read-time="article.readTime"
+      />
+      <div class="article-page__inner">
+        <div class="article-page__cover-wrap">
+          <img
+            :src="article.cover"
+            :alt="article.title"
+            class="article-page__cover"
+            loading="lazy"
+          >
         </div>
+        <div class="article-page__stats">
+          <span class="article-page__stat">
+            <Icon name="lucide:eye" size="14" />
+            {{ formatCount(article.views) }}
+          </span>
+          <span class="article-page__stat">
+            <Icon name="lucide:heart" size="14" />
+            {{ article.likes }}
+          </span>
+          <span class="article-page__stat">
+            <Icon name="lucide:message-circle" size="14" />
+            {{ article.comments }}
+          </span>
+        </div>
+        <ArticleContent :sections="article.content" />
+        <ArticleNav />
+        <ArticleCommentSection :comments="comments" />
       </div>
-    </main>
-
-    <aside class="aside-right">
-      <SidebarRightSidebar>
-        <ArticleTableOfContents :items="tocItems" :active-id="activeId" />
-        <ArticleRelatedPosts :posts="relatedPosts" />
-        <AboutDonateCard />
-      </SidebarRightSidebar>
-    </aside>
+    </div>
+    <ClientOnly>
+      <Teleport to="#right-sidebar-target">
+        <SidebarRightSidebar>
+          <ArticleTableOfContents :items="tocItems" :active-id="activeId" />
+          <ArticleRelatedPosts :posts="relatedPosts" />
+          <AboutDonateCard />
+        </SidebarRightSidebar>
+      </Teleport>
+    </ClientOnly>
   </div>
 </template>
 
