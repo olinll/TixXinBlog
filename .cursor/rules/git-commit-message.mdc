@@ -1,0 +1,67 @@
+---
+description: Git 提交消息规范
+alwaysApply: true
+---
+
+# Git 提交消息规范
+
+采用 Conventional Commits 格式，描述使用中文。
+
+## 格式
+
+```
+<type>(<scope>): <subject>
+
+<body>
+```
+
+## type（必填）
+
+| 类型 | 说明 |
+|------|------|
+| `feat` | 新功能 |
+| `fix` | 修复缺陷 |
+| `style` | 样式调整（不影响逻辑） |
+| `refactor` | 重构（既不是新功能也不是修复） |
+| `chore` | 构建、依赖、配置等杂务 |
+| `docs` | 文档变更 |
+| `perf` | 性能优化 |
+| `test` | 测试相关 |
+
+## scope（可选）
+
+标注影响范围，常用值：`web-blog`、`theme`、`scrollbar`、`sidebar`、`pages`、`blog` 等。
+单文件修改可用组件/模块名，如 `PostCardList`、`settings`。
+
+## subject（必填）
+
+- 使用中文
+- 不加句号
+- 简明概括变更目的（一句话，不超过 50 字）
+
+## body（可选）
+
+- 使用中文
+- 解释"为什么"做此变更，而非"做了什么"
+- 多行时每行不超过 72 字
+
+## 示例
+
+```
+feat(web-blog): 自定义滚动条组件与文章列表懒加载
+```
+
+```
+fix(web-blog): 文章列表懒加载 viewport 就绪后重建 observer
+
+增加 watch 监听 getScrollRoot() 与 sentinelRef，在 viewport 晚于
+onMounted 就绪时自动重建 IntersectionObserver，恢复懒加载。
+```
+
+```
+docs: 添加测试预览图片
+```
+
+```
+chore: pnpm 工作区升级至项目根目录
+```
