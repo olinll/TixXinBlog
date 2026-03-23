@@ -16,7 +16,7 @@
         <CommonSearchBox placeholder="搜索友链..." />
       </template>
     </CommonPageHeader>
-    <CommonCustomScrollbar class="links-body" viewport-class="links-viewport">
+    <CommonCustomScrollbar class="links-body" viewport-class="links-viewport" show-back-to-top>
       <LinkGrid :links="links" />
       <LinkForm />
     </CommonCustomScrollbar>

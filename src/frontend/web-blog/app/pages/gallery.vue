@@ -16,7 +16,7 @@
         <CommonSearchBox placeholder="搜索照片..." />
       </template>
     </CommonPageHeader>
-    <CommonCustomScrollbar class="gallery-body" viewport-class="gallery-viewport">
+    <CommonCustomScrollbar class="gallery-body" viewport-class="gallery-viewport" show-back-to-top>
       <GalleryFilter
         v-model="activeFilter"
         :categories="categories"

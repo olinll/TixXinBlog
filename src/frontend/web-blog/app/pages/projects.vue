@@ -16,7 +16,7 @@
         <CommonSearchBox placeholder="搜索项目..." />
       </template>
     </CommonPageHeader>
-    <CommonCustomScrollbar class="projects-body" viewport-class="projects-viewport">
+    <CommonCustomScrollbar class="projects-body" viewport-class="projects-viewport" show-back-to-top>
       <ProjectGrid :projects="projects" />
     </CommonCustomScrollbar>
     <ClientOnly>
