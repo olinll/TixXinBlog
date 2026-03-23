@@ -7,10 +7,7 @@
 
 <template>
   <div class="main-inner">
-    <header class="about-header">
-      <CommonSearchBox placeholder="搜索..." />
-    </header>
-    <CommonCustomScrollbar class="about-body" viewport-class="about-viewport">
+    <CommonCustomScrollbar class="about-body" viewport-class="about-viewport" show-back-to-top>
       <AboutHero :profile="profile" />
       <AboutSkillBars :skills="skills" />
       <AboutExperienceTimeline :experiences="experiences" />
@@ -47,12 +44,6 @@ const readings = mockReadings
 </script>
 
 <style lang="scss" scoped>
-.about-header {
-  padding: 1.5rem 2rem 0.5rem;
-  display: flex;
-  justify-content: flex-end;
-}
-
 .about-body {
   flex: 1;
   padding: 0;

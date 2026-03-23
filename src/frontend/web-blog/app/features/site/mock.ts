@@ -9,9 +9,9 @@ import type { FooterLink, PoweredByItem, SiteStatus } from './types'
 
 export const mockFooterLinks: FooterLink[] = [
   { label: '关于本站', href: '/about' },
-  { label: '隐私政策', href: '/privacy' },
-  { label: 'RSS 订阅', href: '/rss' },
-  { label: '站点地图', href: '/sitemap' },
+  { label: '隐私政策', href: '#' },
+  { label: 'RSS 订阅', href: '#' },
+  { label: '站点地图', href: '#' },
 ]
 
 export const mockPoweredBy: PoweredByItem[] = [

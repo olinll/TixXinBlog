@@ -8,7 +8,7 @@
 <template>
   <footer class="site-footer">
     <div class="footer__left">
-      <span>&copy; 2024 TixXin Blog. All rights reserved.</span>
+      <span>&copy; {{ currentYear }} TixXin Blog. All rights reserved.</span>
       <div class="footer__links">
         <a v-for="link in footerLinks" :key="link.label" :href="link.href">{{ link.label }}</a>
       </div>
@@ -34,6 +34,7 @@
 <script setup lang="ts">
 import { mockFooterLinks, mockPoweredBy, mockSiteStatus } from '~/features/site/mock'
 
+const currentYear = new Date().getFullYear()
 const footerLinks = mockFooterLinks
 const poweredBy = mockPoweredBy
 const siteStatus = mockSiteStatus
