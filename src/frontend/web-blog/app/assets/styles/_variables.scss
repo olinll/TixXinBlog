@@ -1,6 +1,6 @@
 /**
  * @file _variables.scss
- * @description CSS 自定义属性（运行时主题变量），定义亮色和暗色主题的颜色体系
+ * @description CSS 自定义属性（运行时主题变量），定义亮色和暗色主题的颜色体系；封面叠层（--surface-cover-overlay、--text-on-cover*、--cover-overlay-*）、置顶徽标（--pin-badge-*）
  * @author TixXin
  * @since 2025-03-17
  */
@@ -17,8 +17,16 @@
   
     /* --- 表面/卡片层级 --- */
     --surface-1: #ffffff;
-    --surface-1-alpha: rgba(255, 255, 255, 0.8);
-    --surface-1-alpha-90: rgba(255, 255, 255, 0.9);
+    /* 页面上玻璃态（顶栏/底栏等）：提高不透明度减轻发灰感 */
+    --surface-1-alpha: rgba(255, 255, 255, 0.94);
+    --surface-1-alpha-90: rgba(255, 255, 255, 0.96);
+    /* 文章卡片封面叠层：亮色用磨砂白 + 深字 + 玻璃边缘 */
+    --surface-cover-overlay: rgba(255, 255, 255, 0.82);
+    --text-on-cover: #1e293b;
+    --text-on-cover-muted: #64748b;
+    --cover-overlay-backdrop: blur(16px) saturate(1.15);
+    --cover-overlay-border: 1px solid rgba(255, 255, 255, 0.92);
+    --cover-overlay-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
     --surface-2: #f8fafc;
     --surface-3: #f1f5f9;
   
@@ -52,6 +60,10 @@
   
     /* --- 焦点环 --- */
     --focus-ring: #94a3b8;
+
+    /* --- 文章列表置顶徽标 --- */
+    --pin-badge-bg: rgba(239, 68, 68, 0.1);
+    --pin-badge-border: rgba(239, 68, 68, 0.32);
   
     /* --- 标签颜色（各色系：背景/文字/边框） --- */
     --tag-emerald-bg: #ecfdf5;
@@ -107,6 +119,12 @@
        --surface-1: #2a2f37;
        --surface-1-alpha: rgba(42, 47, 55, 0.3);
        --surface-1-alpha-90: rgba(42, 47, 55, 0.3);
+       --surface-cover-overlay: rgba(42, 47, 55, 0.36);
+       --text-on-cover: #f8fafc;
+       --text-on-cover-muted: rgba(203, 213, 225, 0.9);
+       --cover-overlay-backdrop: blur(12px);
+       --cover-overlay-border: none;
+       --cover-overlay-shadow: none;
        --surface-2: #313741;
        --surface-3: #383f4a;
   
@@ -140,6 +158,10 @@
   
     /* --- 焦点环 --- */
     --focus-ring: #5b7cfa;
+
+    /* --- 文章列表置顶徽标 --- */
+    --pin-badge-bg: rgba(239, 68, 68, 0.16);
+    --pin-badge-border: rgba(248, 113, 113, 0.45);
   
     /* --- 标签颜色（暗色适配：低饱和度背景 + 高亮文字） --- */
     --tag-emerald-bg: rgba(16, 185, 129, 0.12);
