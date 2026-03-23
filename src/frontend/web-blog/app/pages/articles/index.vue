@@ -16,7 +16,7 @@
         <CommonSearchBox placeholder="搜索文章标题、内容..." />
       </template>
     </CommonPageHeader>
-    <CommonCustomScrollbar class="articles-body" viewport-class="articles-viewport">
+    <CommonCustomScrollbar class="articles-body" viewport-class="articles-viewport" show-back-to-top>
       <ArticleArchiveTimeline :years="archiveYears" />
     </CommonCustomScrollbar>
     <ClientOnly>

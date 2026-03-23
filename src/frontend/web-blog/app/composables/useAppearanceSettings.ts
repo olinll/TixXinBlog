@@ -94,10 +94,19 @@ export function useAppearanceSettings() {
   /**
    * SSR 期间无法读 localStorage，若直接输出动画类会按默认值播放，
    * 等客户端还原设置后再切换类已来不及（动画已播完）。
-   * 因此 SSR 阶段返回空字符串，客户端初始化完成后再输出正确的动画类。
+   * 因此 SSR 阶段和 hydration 期间均返回空字符串，
+   * hydration 完成后（nextTick）再输出正确的动画类，避免类名不匹配警告。
    */
+  const hydrated = useState('appearance-hydrated', () => false)
+
+  if (import.meta.client && !hydrated.value) {
+    nextTick(() => {
+      hydrated.value = true
+    })
+  }
+
   const sidebarAnimationClass = computed(() => {
-    if (!import.meta.client) return ''
+    if (!hydrated.value) return ''
 
     switch (sidebarAnimationPreset.value) {
       case 'scale':
